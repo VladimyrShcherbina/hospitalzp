@@ -1,0 +1,34 @@
+<div class="m-3 row d-flex justify-content-center">
+  <div class="col-md-6">
+    <div class="w-100 timeMagin">
+      <div class="row">
+        <div class="table-responsive-md">
+          <table class="table table-striped">
+            <tr>
+              <th scope="col">Doctor Name</th>
+              <th scope="col">Speciality</th>
+              <th scope="col">Date</th>
+              <th scope="col">Start Time</th>
+              <th scope="col">End Time</th>
+            </tr>
+            <% if @answers.present? %>
+              <% @answers.each do |a| %>
+                <tr>
+                  <td><%= a.doctor.name %></td>
+                  <td><%= a.doctor.speciality%></td>
+                  <td><%= a.answer_date.strftime "%d/%m/%y" %></td>
+                  <td><%= a.start_time %></td>
+                  <td><%= a.end_time %></td>
+                <tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td colspan="6">Data is not available</td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>	

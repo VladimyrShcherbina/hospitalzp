@@ -1,0 +1,13 @@
+<div class="container org-form shadow-lg mt-5 pb-3 text-dark fs-5">
+  <%= form_for(@answer) do |f| %>
+    <div class="form-inputs">
+      <%= f.text_field :description, placeholder: "Connect with a doctor who will answer your question" %>
+    </div>
+    <%= f.label :start_time, "Answer Time" %>
+		<%= f.datetime_field :start_time %>
+		<%= f.label :answer_date, "Answer Date" %>
+		<%= f.datetime_field :answer_date %>
+      <%= f.submit %>
+      <%= link_to "Back", @answer_path, class: "btn btn-outline-secondary mx-3" %>
+  <%end%>  
+</div>

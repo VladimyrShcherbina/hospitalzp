@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <% if user_signed_in? || doctor_signed_in?%>
+      <%= link_to "Codica", root_path, class: "navbar-brand" %>
+    <% else %>
+      <%= link_to "Codica", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <% end %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+              <li class="nav-item">
+            <%= link_to "Connect with a doctor who will answer your question", new_answer_path, class: "nav-link active" %>
+          </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <%= link_to "My account", users_path, class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "My answers", answers_answers_path, class: "dropdown-item"  %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                </li>
+              </ul>
+            </li>
+          </li>
+        <% else %>
+        <% if doctor_signed_in? %>
+          <li class="nav-item">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <%= link_to "My account", doctors_path, class: "dropdown-item" %>
+                </li>
+                <li>
+                  <%= link_to "Your question", "#", class: "dropdown-item" %>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <%= link_to "Sign out", destroy_doctor_session_path, method: :delete, class: "dropdown-item" %>
+                </li>
+              </ul>
+            </li>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Register Doctor", new_doctor_registration_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Register Patient", new_user_registration_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign in Doctor", new_doctor_session_path, class: "nav-link active" %>
+          </li>
+            <li class="nav-item">
+            <%= link_to "Sign in Patient", new_user_session_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign in Admin", new_admin_user_session_path, class: "nav-link active" %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
